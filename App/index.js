@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
     },
     picker: {
         color: '#ecc30b',
+        backgroundColor: 'rgba(93, 73, 84, 0.4)',  // Adjust the background color for better visibility
     },
     input: {
         height: 50,
