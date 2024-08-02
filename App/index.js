@@ -1,6 +1,5 @@
 // Filename: index.js
 // Combined code from all files
-
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, TextInput, Button, Text, ActivityIndicator, View } from 'react-native';
 import axios from 'axios';
@@ -51,8 +50,8 @@ export default function App() {
                     value={reason}
                     onChangeText={setReason}
                 />
-                <Button title="Evaluate" onPress={handleEvaluate} color="#004d40" />
-                {loading ? <ActivityIndicator size="large" color="#004d40" /> : null}
+                <Button title="Evaluate" onPress={handleEvaluate} color="#ecc30b" />
+                {loading ? <ActivityIndicator size="large" color="#136f63" /> : null}
                 {response ? <Text style={styles.response}>{response}</Text> : null}
             </ScrollView>
         </SafeAreaView>
@@ -62,7 +61,7 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f5f5f5',
+        backgroundColor: '#0c0c0c',
     },
     scrollView: {
         flexGrow: 1,
@@ -74,22 +73,22 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 20,
-        color: '#004d40',
+        color: '#ecc30b',
     },
     input: {
         height: 50,
-        borderColor: '#004d40',
+        borderColor: '#5d4954',
         borderWidth: 1,
         borderRadius: 8,
         paddingHorizontal: 10,
         marginBottom: 20,
         width: '100%',
-        color: '#004d40',
+        color: '#ecc30b',
     },
     response: {
         marginTop: 20,
         fontSize: 16,
-        color: '#004d40',
+        color: '#136f63',
         paddingHorizontal: 10,
         textAlign: 'center',
     },
