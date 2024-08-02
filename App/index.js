@@ -40,28 +40,31 @@ export default function App() {
         <SafeAreaView style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollView}>
                 <Text style={styles.title}>MUNDUM CLUB Investment Valuation</Text>
-                <Picker
-                    selectedValue={assetType}
-                    style={styles.picker}
-                    onValueChange={(itemValue) => setAssetType(itemValue)}
-                >
-                    <Picker.Item label="Select Asset Type" value="" />
-                    <Picker.Item label="Bitcoin" value="Bitcoin" />
-                    <Picker.Item label="ICO Tokens" value="ICO Tokens" />
-                    <Picker.Item label="Invest Startup" value="Invest Startup" />
-                    <Picker.Item label="Real Estate" value="Real Estate" />
-                    <Picker.Item label="Stocks" value="Stocks" />
-                    <Picker.Item label="Bonds" value="Bonds" />
-                    <Picker.Item label="Commodities" value="Commodities" />
-                    <Picker.Item label="Mutual Funds" value="Mutual Funds" />
-                    <Picker.Item label="ETFs" value="ETFs" />
-                    <Picker.Item label="Precious Metals" value="Precious Metals" />
-                </Picker>
+                <View style={styles.pickerContainer}>
+                    <Picker
+                        selectedValue={assetType}
+                        style={styles.picker}
+                        onValueChange={(itemValue) => setAssetType(itemValue)}
+                    >
+                        <Picker.Item label="Select Asset Type" value="" />
+                        <Picker.Item label="Bitcoin" value="Bitcoin" />
+                        <Picker.Item label="ICO Tokens" value="ICO Tokens" />
+                        <Picker.Item label="Invest Startup" value="Invest Startup" />
+                        <Picker.Item label="Real Estate" value="Real Estate" />
+                        <Picker.Item label="Stocks" value="Stocks" />
+                        <Picker.Item label="Bonds" value="Bonds" />
+                        <Picker.Item label="Commodities" value="Commodities" />
+                        <Picker.Item label="Mutual Funds" value="Mutual Funds" />
+                        <Picker.Item label="ETFs" value="ETFs" />
+                        <Picker.Item label="Precious Metals" value="Precious Metals" />
+                    </Picker>
+                </View>
                 <TextInput
                     style={styles.input}
                     placeholder="Reason for Investment"
                     value={reason}
                     onChangeText={setReason}
+                    placeholderTextColor="#5d4954"
                 />
                 <TouchableOpacity style={styles.button} onPress={handleEvaluate}>
                     <Text style={styles.buttonText}>Evaluate</Text>
@@ -91,13 +94,16 @@ const styles = StyleSheet.create({
         color: '#ecc30b',
         textAlign: 'center',
     },
-    picker: {
+    pickerContainer: {
         height: 50,
         width: '100%',
-        color: '#ecc30b',
         backgroundColor: 'rgba(93, 73, 84, 0.2)',
         borderRadius: 8,
         marginBottom: 20,
+        justifyContent: 'center',
+    },
+    picker: {
+        color: '#ecc30b',
     },
     input: {
         height: 50,
