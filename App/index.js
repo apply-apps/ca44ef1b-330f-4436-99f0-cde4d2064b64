@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, TextInput, TouchableOpacity, Text, ActivityIndicator, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
+import { Picker } from '@react-native-picker/picker';
 
 const API_URL = "http://apihub.p.appply.xyz:3300/chatgpt";
 
@@ -98,7 +98,7 @@ function EvaluateButton({ reason, assetType }) {
 
   return (
     <>
-      <TouchableOpacity style={styles.button} onPress={handleEvaluate}>
+      <TouchableOpacity style={[styles.button, styles.yellowButton]} onPress={handleEvaluate}>
         <Text style={styles.buttonText}>Evaluate</Text>
       </TouchableOpacity>
       {loading ? <ActivityIndicator size="large" color="#136f63" /> : null}
@@ -158,6 +158,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
     width: '100%',
+  },
+  yellowButton: {
+    backgroundColor: '#ecc30b', // Yellow color for the buttons
   },
   buttonText: {
     color: '#fff',
