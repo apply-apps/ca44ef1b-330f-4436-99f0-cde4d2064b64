@@ -3,6 +3,7 @@
 
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, TextInput, TouchableOpacity, Text, ActivityIndicator, View } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
 
 const API_URL = "http://apihub.p.appply.xyz:3300/chatgpt";
@@ -39,12 +40,23 @@ export default function App() {
         <SafeAreaView style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollView}>
                 <Text style={styles.title}>MUNDUM CLUB Investment Valuation</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Type of Asset"
-                    value={assetType}
-                    onChangeText={setAssetType}
-                />
+                <Picker
+                    selectedValue={assetType}
+                    style={styles.picker}
+                    onValueChange={(itemValue) => setAssetType(itemValue)}
+                >
+                    <Picker.Item label="Select Asset Type" value="" />
+                    <Picker.Item label="Bitcoin" value="Bitcoin" />
+                    <Picker.Item label="ICO Tokens" value="ICO Tokens" />
+                    <Picker.Item label="Invest Startup" value="Invest Startup" />
+                    <Picker.Item label="Real Estate" value="Real Estate" />
+                    <Picker.Item label="Stocks" value="Stocks" />
+                    <Picker.Item label="Bonds" value="Bonds" />
+                    <Picker.Item label="Commodities" value="Commodities" />
+                    <Picker.Item label="Mutual Funds" value="Mutual Funds" />
+                    <Picker.Item label="ETFs" value="ETFs" />
+                    <Picker.Item label="Precious Metals" value="Precious Metals" />
+                </Picker>
                 <TextInput
                     style={styles.input}
                     placeholder="Reason for Investment"
@@ -78,6 +90,14 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         color: '#ecc30b',
         textAlign: 'center',
+    },
+    picker: {
+        height: 50,
+        width: '100%',
+        color: '#ecc30b',
+        backgroundColor: 'rgba(93, 73, 84, 0.2)',
+        borderRadius: 8,
+        marginBottom: 20,
     },
     input: {
         height: 50,
