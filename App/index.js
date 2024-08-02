@@ -1,7 +1,8 @@
 // Filename: index.js
 // Combined code from all files
+
 import React, { useState } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, TextInput, Button, Text, ActivityIndicator, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, TextInput, TouchableOpacity, Text, ActivityIndicator, View } from 'react-native';
 import axios from 'axios';
 
 const API_URL = "http://apihub.p.appply.xyz:3300/chatgpt";
@@ -19,7 +20,7 @@ export default function App() {
             const apiResponse = await axios.post(API_URL, {
                 messages: [
                     { role: "system", content: "You are a helpful assistant. Please provide answers for given requests." },
-                    { role: "user", content: `I want to invest in ${assetType} because ${reason}. Please comment on this decision.` }
+                    { role: "user", content: `I want to invest in ${assetType} because ${reason}. Please provide a brief comment on this decision.` }
                 ],
                 model: "gpt-4o"
             });
@@ -50,7 +51,9 @@ export default function App() {
                     value={reason}
                     onChangeText={setReason}
                 />
-                <Button title="Evaluate" onPress={handleEvaluate} color="#ecc30b" />
+                <TouchableOpacity style={styles.button} onPress={handleEvaluate}>
+                    <Text style={styles.buttonText}>Evaluate</Text>
+                </TouchableOpacity>
                 {loading ? <ActivityIndicator size="large" color="#136f63" /> : null}
                 {response ? <Text style={styles.response}>{response}</Text> : null}
             </ScrollView>
@@ -74,6 +77,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 20,
         color: '#ecc30b',
+        textAlign: 'center',
     },
     input: {
         height: 50,
@@ -84,6 +88,19 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         width: '100%',
         color: '#ecc30b',
+    },
+    button: {
+        backgroundColor: '#de1a1a',
+        padding: 15,
+        borderRadius: 30,
+        alignItems: 'center',
+        marginBottom: 20,
+        width: '100%',
+    },
+    buttonText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
     },
     response: {
         marginTop: 20,
